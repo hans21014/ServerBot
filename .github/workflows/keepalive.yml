@@ -18,7 +18,7 @@ jobs:
           python -c "
           from mcstatus import JavaServer
           try:
-              server = JavaServer.lookup('yourname.play.jumphosting.cloud')
+              server = JavaServer.lookup('jeromecraft.play.jumphosting.cloud')
               status = server.status()
               print(f'Server active: {status.players.online} players online')
           except Exception as e:
