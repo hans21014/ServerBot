@@ -1,0 +1,26 @@
+name: Jump Hosting Keep Alive
+
+on:
+  schedule:
+    # Runs every 10 minutes to prevent the 15-minute timeout
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install mcstatus
+        run: pip install mcstatus
+
+      - name: Ping Minecraft Server
+        run: |
+          python -c "
+          from mcstatus import JavaServer
+          try:
+              server = JavaServer.lookup('yourname.play.jumphosting.cloud')
+              status = server.status()
+              print(f'Server active: {status.players.online} players online')
+          except Exception as e:
+              print(f'Ping failed or server waking: {e}')
+          "
