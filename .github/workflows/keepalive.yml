@@ -3,7 +3,7 @@ name: Jump Hosting Keep Alive
 on:
   schedule:
     # Runs every 10 minutes to prevent the 15-minute timeout
-    - cron: '*/10 * * * *'
+    - cron: '*/7 * * * *'
   workflow_dispatch:
 
 jobs:
